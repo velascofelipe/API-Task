@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  rossmanager_mysql:
+    image: mysql:latest
+    container_name: rossmanager_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+    networks:
+      - mynetwork
+
+  springboot_app:
+    image: rossmanager:latest  # Actualiza con el nombre correcto
+    container_name: springboot_app
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
